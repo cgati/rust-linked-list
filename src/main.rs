@@ -25,6 +25,19 @@ impl Node {
             Nil => 0
         }
     }
+
+    fn print_list(&self) {
+        match *self {
+            Cons(x, ref tail) => {
+                print!("{} ", x);
+                tail.print_list();
+            },
+            Nil => {
+                println!("");
+                return;
+            }
+        }
+    }
 }
 
 fn main() {
@@ -32,4 +45,6 @@ fn main() {
     head = head.append_to_front(2);
 
     println!("The length of the linked list is: {}", head.length());
+    print!("The linked list contains: ");
+    head.print_list();
 }
